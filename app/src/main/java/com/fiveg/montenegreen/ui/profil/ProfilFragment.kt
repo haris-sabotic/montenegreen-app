@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.fiveg.montenegreen.R
 import com.fiveg.montenegreen.databinding.FragmentProfilBinding
+import com.fiveg.montenegreen.util.GlobalData
 
 class ProfilFragment : Fragment() {
 
@@ -28,9 +30,9 @@ class ProfilFragment : Fragment() {
         _binding = FragmentProfilBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textProfil
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.profilButtonLogout.setOnClickListener {
+            GlobalData.saveToken(requireContext(), null)
+            findNavController().navigate(R.id.action_profil_to_login)
         }
         return root
     }
