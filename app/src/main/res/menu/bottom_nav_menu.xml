@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_mapa"
+        android:icon="@drawable/baseline_location_on_24"
+        android:title="Mapa" />
+
+    <item
+        android:id="@+id/navigation_zadaci"
+        android:icon="@drawable/baseline_check_circle_24"
+        android:title="Zadaci" />
+
+    <item
+        android:id="@+id/navigation_popusti"
+        android:icon="@drawable/baseline_percent_24"
+        android:title="Popusti" />
+
+    <item
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/baseline_person_24"
+        android:title="Profil" />
+
+</menu>

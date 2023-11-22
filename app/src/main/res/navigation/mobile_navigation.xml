@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.fiveg.montenegreen.ui.SplashFragment"
+        android:label="Splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splash_to_login"
+            app:popUpTo="@+id/navigation_splash"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_login" />
+
+        <action
+            android:id="@+id/action_splash_to_register"
+            app:popUpTo="@+id/navigation_splash"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_register" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.fiveg.montenegreen.ui.auth.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_register"
+            app:popUpTo="@+id/navigation_login"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_register" />
+
+        <action
+            android:id="@+id/action_login_to_mapa"
+            app:popUpTo="@+id/navigation_login"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_mapa" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.fiveg.montenegreen.ui.auth.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_register_to_login"
+            app:popUpTo="@+id/navigation_register"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_login" />
+
+        <action
+            android:id="@+id/action_register_to_mapa"
+            app:popUpTo="@+id/navigation_register"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_mapa" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_mapa"
+        android:name="com.fiveg.montenegreen.ui.mapa.MapaFragment"
+        android:label="Mapa"
+        tools:layout="@layout/fragment_mapa" />
+
+    <fragment
+        android:id="@+id/navigation_zadaci"
+        android:name="com.fiveg.montenegreen.ui.zadaci.ZadaciFragment"
+        android:label="Zadaci"
+        tools:layout="@layout/fragment_zadaci" />
+
+    <fragment
+        android:id="@+id/navigation_popusti"
+        android:name="com.fiveg.montenegreen.ui.popusti.PopustiFragment"
+        android:label="Popusti"
+        tools:layout="@layout/fragment_popusti" />
+
+    <fragment
+        android:id="@+id/navigation_profil"
+        android:name="com.fiveg.montenegreen.ui.profil.ProfilFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profil" />
+</navigation>
