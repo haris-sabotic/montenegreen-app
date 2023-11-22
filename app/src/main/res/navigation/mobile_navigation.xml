@@ -22,6 +22,12 @@
             app:popUpToInclusive="true"
             app:destination="@id/navigation_register" />
 
+        <action
+            android:id="@+id/action_splash_to_mapa"
+            app:popUpTo="@+id/navigation_splash"
+            app:popUpToInclusive="true"
+            app:destination="@id/navigation_mapa" />
+
     </fragment>
 
     <fragment

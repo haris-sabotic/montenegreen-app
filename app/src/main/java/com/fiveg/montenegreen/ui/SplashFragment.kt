@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.fiveg.montenegreen.R
 import com.fiveg.montenegreen.databinding.FragmentSplashBinding
+import com.fiveg.montenegreen.util.GlobalData
 
 class SplashFragment : Fragment() {
 
@@ -26,11 +27,14 @@ class SplashFragment : Fragment() {
     ): View {
         _binding = FragmentSplashBinding.inflate(inflater, container, false)
 
-
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_splash_to_login)
-        }, 2000)
-
+            GlobalData.loadTokenFromSharedPrefs(requireContext())
+            if (GlobalData.getToken() == null) {
+                findNavController().navigate(R.id.action_splash_to_login)
+            } else {
+                findNavController().navigate(R.id.action_splash_to_mapa)
+            }
+        }, 1000)
 
         return binding.root
     }
