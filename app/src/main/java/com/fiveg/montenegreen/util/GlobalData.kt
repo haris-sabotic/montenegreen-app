@@ -27,4 +27,6 @@ object GlobalData {
     fun getToken(): String? {
         return _token
     }
+
+    val CURRENT_USER_POINTS = 35
 }

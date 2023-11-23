@@ -1,12 +1,14 @@
 package com.fiveg.montenegreen.ui.zadaci
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiveg.montenegreen.databinding.FragmentZadaciBinding
 
 class ZadaciFragment : Fragment() {
@@ -28,10 +30,14 @@ class ZadaciFragment : Fragment() {
         _binding = FragmentZadaciBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textZadaci
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.zadaciRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        viewModel.loadZadaci()
+
+        viewModel.zadaci.observeForever {
+            binding.zadaciRecycler.adapter = ZadaciRecyclerViewAdapter(requireContext(), it)
         }
+
         return root
     }
 

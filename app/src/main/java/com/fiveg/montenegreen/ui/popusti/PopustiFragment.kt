@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiveg.montenegreen.databinding.FragmentPopustiBinding
+import com.fiveg.montenegreen.ui.zadaci.ZadaciRecyclerViewAdapter
 
 class PopustiFragment : Fragment() {
 
@@ -28,9 +30,12 @@ class PopustiFragment : Fragment() {
         _binding = FragmentPopustiBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textPopusti
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.popustiRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        viewModel.loadPopusti()
+
+        viewModel.popusti.observeForever {
+            binding.popustiRecycler.adapter = PopustiRecyclerViewAdapter(requireContext(), it)
         }
         return root
     }
