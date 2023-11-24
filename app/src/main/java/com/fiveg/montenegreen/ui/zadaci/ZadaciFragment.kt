@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiveg.montenegreen.databinding.FragmentZadaciBinding
 
 class ZadaciFragment : Fragment() {
+    private val viewModel: ZadaciViewModel by activityViewModels()
 
     private var _binding: FragmentZadaciBinding? = null
 
@@ -24,21 +27,23 @@ class ZadaciFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel =
-            ViewModelProvider(this)[ZadaciViewModel::class.java]
-
         _binding = FragmentZadaciBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.zadaciRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        viewModel.loadZadaci()
-
-        viewModel.zadaci.observeForever {
-            binding.zadaciRecycler.adapter = ZadaciRecyclerViewAdapter(requireContext(), it)
+        if (viewModel.zadaci.value == null) {
+            viewModel.loadZadaci()
         }
 
-        return root
+        viewModel.zadaci.observe(viewLifecycleOwner) {
+            binding.zadaciRecycler.adapter = ZadaciRecyclerViewAdapter(requireContext(), it)
+        }
     }
 
     override fun onDestroyView() {

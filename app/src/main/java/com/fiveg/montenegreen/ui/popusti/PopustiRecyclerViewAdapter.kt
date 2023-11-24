@@ -18,7 +18,8 @@ import kotlin.math.roundToInt
 
 class PopustiRecyclerViewAdapter(
     private val context: Context,
-    private val dataSet: ArrayList<PopustModel>
+    private val dataSet: ArrayList<PopustModel>,
+    private var userPoints: Int
 ) :
     RecyclerView.Adapter<PopustiRecyclerViewAdapter.ViewHolder>() {
 
@@ -56,10 +57,10 @@ class PopustiRecyclerViewAdapter(
         viewHolder.location.text = dataSet[position].location
         viewHolder.description.text = dataSet[position].description
 
-        viewHolder.fractionLeft.text = GlobalData.CURRENT_USER_POINTS.toString()
+        viewHolder.fractionLeft.text = userPoints.toString()
         viewHolder.fractionRight.text = dataSet[position].points.toString()
 
-        val percentage = 100F * (GlobalData.CURRENT_USER_POINTS.toFloat() / dataSet[position].points.toFloat())
+        val percentage = 100F * (userPoints.toFloat() / dataSet[position].points.toFloat())
         val progress = minOf(100F, percentage)
         viewHolder.progress.progress = progress.roundToInt()
 
@@ -68,10 +69,15 @@ class PopustiRecyclerViewAdapter(
         }
 
         Glide.with(context)
-            .load(dataSet[position].photoUrl)
+            .load(GlobalData.PHOTO_URL_PREFIX + dataSet[position].photoUrl)
             .into(viewHolder.photo);
     }
 
     override fun getItemCount() = dataSet.size
 
+
+    fun updateUserPoints(newUserPoints: Int) {
+        userPoints = newUserPoints
+        notifyItemRangeChanged(0, dataSet.size)
+    }
 }

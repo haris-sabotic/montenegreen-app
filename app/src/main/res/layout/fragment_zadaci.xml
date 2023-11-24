@@ -10,7 +10,6 @@
         android:id="@+id/zadaci_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="55dp"
         android:clipChildren="false"
         android:orientation="vertical">
     </androidx.recyclerview.widget.RecyclerView>

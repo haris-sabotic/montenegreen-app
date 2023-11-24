@@ -28,5 +28,6 @@ object GlobalData {
         return _token
     }
 
-    val CURRENT_USER_POINTS = 35
+    val API_PREFIX = "http://192.168.1.52:8000/api/"
+    val PHOTO_URL_PREFIX = "http://192.168.1.52:8000/storage/"
 }

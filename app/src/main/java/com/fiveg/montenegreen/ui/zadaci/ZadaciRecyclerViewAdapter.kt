@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fiveg.montenegreen.R
 import com.fiveg.montenegreen.models.ZadatakModel
+import com.fiveg.montenegreen.util.GlobalData
 
 
 class ZadaciRecyclerViewAdapter(
@@ -48,7 +49,7 @@ class ZadaciRecyclerViewAdapter(
         viewHolder.description.text = dataSet[position].description
 
         Glide.with(context)
-            .load(dataSet[position].photoUrl)
+            .load(GlobalData.PHOTO_URL_PREFIX + dataSet[position].photoUrl)
             .into(viewHolder.photo);
     }
 
