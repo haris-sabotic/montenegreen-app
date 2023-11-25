@@ -87,6 +87,12 @@
         tools:layout="@layout/fragment_popusti" />
 
     <fragment
+        android:id="@+id/navigation_leaderboard"
+        android:name="com.fiveg.montenegreen.ui.leaderboard.LeaderboardFragment"
+        android:label="Leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
+
+    <fragment
         android:id="@+id/navigation_profil"
         android:name="com.fiveg.montenegreen.ui.profil.ProfilFragment"
         android:label="Profil"

@@ -70,4 +70,7 @@ interface ApiInterface {
 
     @GET("discounts")
     fun discounts(): Call<ArrayList<PopustModel>>
+
+    @GET("leaderboard")
+    fun leaderboard(): Call<ArrayList<UserModel>>
 }

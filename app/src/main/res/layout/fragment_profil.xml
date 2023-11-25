@@ -41,7 +41,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/baseline_paid_24"
+            android:src="@drawable/ic_coin"
             android:layout_gravity="center_vertical" />
 
         <TextView
@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Body2"
             android:text=""
+            android:textColor="?attr/colorPrimaryVariant"
             android:textSize="32sp"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical" />

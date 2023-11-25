@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_mapa,
                 R.id.navigation_zadaci,
                 R.id.navigation_popusti,
+                R.id.navigation_leaderboard,
                 R.id.navigation_profil
             )
         )

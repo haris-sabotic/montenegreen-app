@@ -52,8 +52,10 @@ class PopustiFragment : Fragment() {
             profilViewModel.loadUserData(GlobalData.getToken()!!)
         }
 
-        profilViewModel.user.observe(viewLifecycleOwner) {
-            (binding.popustiRecycler.adapter!! as PopustiRecyclerViewAdapter).updateUserPoints(it.points)
+        profilViewModel.user.observe(viewLifecycleOwner) { user ->
+            binding.popustiRecycler.adapter?.let {
+                (it as PopustiRecyclerViewAdapter).updateUserPoints(user.points)
+            }
         }
 
     }
