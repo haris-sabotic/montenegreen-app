@@ -23,10 +23,10 @@
             app:destination="@id/navigation_register" />
 
         <action
-            android:id="@+id/action_splash_to_mapa"
+            android:id="@+id/action_splash_to_zadaci"
             app:popUpTo="@+id/navigation_splash"
             app:popUpToInclusive="true"
-            app:destination="@id/navigation_mapa" />
+            app:destination="@id/navigation_zadaci" />
 
     </fragment>
 
@@ -42,10 +42,10 @@
             app:destination="@id/navigation_register" />
 
         <action
-            android:id="@+id/action_login_to_mapa"
+            android:id="@+id/action_login_to_zadaci"
             app:popUpTo="@+id/navigation_login"
             app:popUpToInclusive="true"
-            app:destination="@id/navigation_mapa" />
+            app:destination="@id/navigation_zadaci" />
 
     </fragment>
 
@@ -78,19 +78,35 @@
         android:id="@+id/navigation_zadaci"
         android:name="com.fiveg.montenegreen.ui.zadaci.ZadaciFragment"
         android:label="Zadaci"
-        tools:layout="@layout/fragment_zadaci" />
+        tools:layout="@layout/fragment_zadaci">
+        <action
+            android:id="@+id/action_zadaci_to_whole_zadatak"
+            app:destination="@id/navigation_whole_zadatak" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_popusti"
         android:name="com.fiveg.montenegreen.ui.popusti.PopustiFragment"
         android:label="Popusti"
-        tools:layout="@layout/fragment_popusti" />
+        tools:layout="@layout/fragment_popusti">
+        <action
+            android:id="@+id/action_popusti_to_whole_popust"
+            app:destination="@id/navigation_whole_popust" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_leaderboard"
         android:name="com.fiveg.montenegreen.ui.leaderboard.LeaderboardFragment"
         android:label="Leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
+
+    <fragment
+        android:id="@+id/navigation_blog"
+        android:name="com.fiveg.montenegreen.ui.blog.BlogFragment"
+        android:label="Blog"
+        tools:layout="@layout/fragment_blog" />
 
     <fragment
         android:id="@+id/navigation_profil"
@@ -103,5 +119,32 @@
             app:popUpToInclusive="true"
             app:destination="@id/navigation_login" />
 
+        <action
+            android:id="@+id/action_profil_to_whole_zadatak"
+            app:destination="@id/navigation_whole_zadatak" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_whole_popust"
+        android:name="com.fiveg.montenegreen.ui.popusti.WholePopustFragment"
+        android:label="Detalji popusta"
+        tools:layout="@layout/fragment_whole_popust">
+        <argument
+            android:name="popustModel"
+            app:argType="com.fiveg.montenegreen.models.PopustModel" />
+        <argument
+            android:name="userPoints"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_whole_zadatak"
+        android:name="com.fiveg.montenegreen.ui.zadaci.WholeZadatakFragment"
+        android:label="Detalji zadatka"
+        tools:layout="@layout/fragment_whole_zadatak">
+        <argument
+            android:name="zadatakModel"
+            app:argType="com.fiveg.montenegreen.models.ZadatakModel" />
     </fragment>
 </navigation>

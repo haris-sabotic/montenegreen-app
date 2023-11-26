@@ -32,7 +32,7 @@ class SplashFragment : Fragment() {
             if (GlobalData.getToken() == null) {
                 findNavController().navigate(R.id.action_splash_to_login)
             } else {
-                findNavController().navigate(R.id.action_splash_to_mapa)
+                findNavController().navigate(R.id.action_splash_to_zadaci)
             }
         }, 1000)
 

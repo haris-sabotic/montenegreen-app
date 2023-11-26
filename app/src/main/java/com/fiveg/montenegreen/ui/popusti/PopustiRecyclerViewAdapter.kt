@@ -13,17 +13,20 @@ import com.bumptech.glide.Glide
 import com.fiveg.montenegreen.R
 import com.fiveg.montenegreen.models.PopustModel
 import com.fiveg.montenegreen.util.GlobalData
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlin.math.roundToInt
 
 class PopustiRecyclerViewAdapter(
     private val context: Context,
     private val dataSet: ArrayList<PopustModel>,
-    private var userPoints: Int
+    private var userPoints: Int,
+    private val onclick: (PopustModel, Int) -> Unit
 ) :
     RecyclerView.Adapter<PopustiRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val card: MaterialCardView
         val photo: ImageView
         val name: TextView
         val location: TextView
@@ -34,6 +37,7 @@ class PopustiRecyclerViewAdapter(
         val progress: LinearProgressIndicator
 
         init {
+            card = view.findViewById(R.id.popust_card)
             photo = view.findViewById(R.id.popust_image)
             name = view.findViewById(R.id.popust_text_name)
             location = view.findViewById(R.id.popust_text_location)
@@ -53,9 +57,13 @@ class PopustiRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.card.setOnClickListener {
+            onclick(dataSet[position], userPoints)
+        }
+
         viewHolder.name.text = dataSet[position].name
         viewHolder.location.text = dataSet[position].location
-        viewHolder.description.text = dataSet[position].description
+        viewHolder.description.text = shortenDescription(dataSet[position].description)
 
         viewHolder.fractionLeft.text = userPoints.toString()
         viewHolder.fractionRight.text = dataSet[position].points.toString()
@@ -71,6 +79,14 @@ class PopustiRecyclerViewAdapter(
         Glide.with(context)
             .load(GlobalData.PHOTO_URL_PREFIX + dataSet[position].photoUrl)
             .into(viewHolder.photo);
+    }
+
+    private fun shortenDescription(description: String): String {
+        return if (description.length < 100) {
+            description
+        } else {
+            "${description.substring(0, 97)}..."
+        }
     }
 
     override fun getItemCount() = dataSet.size

@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
             binding.loginProgress.visibility = View.GONE
 
             GlobalData.saveToken(requireContext(), it)
-            findNavController().navigate(R.id.action_login_to_mapa)
+            findNavController().navigate(R.id.action_login_to_zadaci)
         }
 
         viewModel.errors.observeForever {

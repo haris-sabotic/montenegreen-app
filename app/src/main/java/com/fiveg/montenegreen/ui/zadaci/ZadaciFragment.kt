@@ -10,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fiveg.montenegreen.databinding.FragmentZadaciBinding
+import com.fiveg.montenegreen.ui.popusti.PopustiFragmentDirections
 
 class ZadaciFragment : Fragment() {
     private val viewModel: ZadaciViewModel by activityViewModels()
@@ -42,7 +44,10 @@ class ZadaciFragment : Fragment() {
         }
 
         viewModel.zadaci.observe(viewLifecycleOwner) {
-            binding.zadaciRecycler.adapter = ZadaciRecyclerViewAdapter(requireContext(), it)
+            binding.zadaciRecycler.adapter = ZadaciRecyclerViewAdapter(requireContext(), it) { zadatakModel ->
+                val action = ZadaciFragmentDirections.actionZadaciToWholeZadatak(zadatakModel)
+                findNavController().navigate(action)
+            }
         }
     }
 

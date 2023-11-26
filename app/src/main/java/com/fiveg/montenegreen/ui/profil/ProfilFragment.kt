@@ -53,7 +53,10 @@ class ProfilFragment : Fragment() {
         }
 
         viewModel.zadaci.observe(viewLifecycleOwner) {
-            binding.profilRecyclerZadaci.adapter = ZadaciRecyclerViewAdapter(requireContext(), it)
+            binding.profilRecyclerZadaci.adapter = ZadaciRecyclerViewAdapter(requireContext(), it) { zadatakModel ->
+                val action = ProfilFragmentDirections.actionProfilToWholeZadatak(zadatakModel)
+                findNavController().navigate(action)
+            }
         }
 
         binding.profilButtonLogout.setOnClickListener {

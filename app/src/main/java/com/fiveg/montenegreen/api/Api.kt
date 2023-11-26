@@ -4,6 +4,7 @@ import com.fiveg.montenegreen.api.requests.LoginRequest
 import com.fiveg.montenegreen.api.requests.RegisterRequest
 import com.fiveg.montenegreen.api.responses.LoginResponse
 import com.fiveg.montenegreen.api.responses.RegisterResponse
+import com.fiveg.montenegreen.models.BlogpostModel
 import com.fiveg.montenegreen.models.PopustModel
 import com.fiveg.montenegreen.models.UserModel
 import com.fiveg.montenegreen.models.ZadatakModel
@@ -73,4 +74,7 @@ interface ApiInterface {
 
     @GET("leaderboard")
     fun leaderboard(): Call<ArrayList<UserModel>>
+
+    @GET("blog")
+    fun blog(): Call<ArrayList<BlogpostModel>>
 }

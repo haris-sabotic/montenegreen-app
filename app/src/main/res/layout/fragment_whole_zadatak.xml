@@ -3,25 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
     android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/zadatak_card"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?attr/selectableItemBackground">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/zadatak_image"
+                android:id="@+id/whole_zadatak_image"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:src="@color/black" />
 
             <RelativeLayout
@@ -31,7 +26,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp">
                 <TextView
-                    android:id="@+id/zadatak_text_name"
+                    android:id="@+id/whole_zadatak_text_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextAppearance.AppCompat.Headline"
@@ -53,7 +48,7 @@
                         android:layout_gravity="center_vertical" />
 
                     <TextView
-                        android:id="@+id/zadatak_text_points"
+                        android:id="@+id/whole_zadatak_text_points"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/TextAppearance.AppCompat.Body2"
@@ -81,7 +76,7 @@
                     android:layout_gravity="center_vertical" />
 
                 <TextView
-                    android:id="@+id/zadatak_text_location"
+                    android:id="@+id/whole_zadatak_text_location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextAppearance.AppCompat.Body2"
@@ -94,7 +89,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/zadatak_text_description"
+                android:id="@+id/whole_zadatak_text_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/TextAppearance.AppCompat.Body1"
@@ -105,6 +100,6 @@
                 android:layout_marginLeft="15dp" />
 
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 
 </LinearLayout>

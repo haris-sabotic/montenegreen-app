@@ -11,15 +11,17 @@ import com.bumptech.glide.Glide
 import com.fiveg.montenegreen.R
 import com.fiveg.montenegreen.models.ZadatakModel
 import com.fiveg.montenegreen.util.GlobalData
-
+import com.google.android.material.card.MaterialCardView
 
 class ZadaciRecyclerViewAdapter(
     private val context: Context,
-    private val dataSet: ArrayList<ZadatakModel>
+    private val dataSet: ArrayList<ZadatakModel>,
+    private val onclick: (ZadatakModel) -> Unit
 ) :
     RecyclerView.Adapter<ZadaciRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val card: MaterialCardView
         val photo: ImageView
         val name: TextView
         val points: TextView
@@ -27,6 +29,7 @@ class ZadaciRecyclerViewAdapter(
         val description: TextView
 
         init {
+            card = view.findViewById(R.id.zadatak_card)
             photo = view.findViewById(R.id.zadatak_image)
             name = view.findViewById(R.id.zadatak_text_name)
             points = view.findViewById(R.id.zadatak_text_points)
@@ -43,14 +46,26 @@ class ZadaciRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.card.setOnClickListener {
+            onclick(dataSet[position])
+        }
+
         viewHolder.name.text = dataSet[position].name
         viewHolder.location.text = dataSet[position].location
         viewHolder.points.text = dataSet[position].points.toString()
-        viewHolder.description.text = dataSet[position].description
+        viewHolder.description.text = shortenDescription(dataSet[position].description)
 
         Glide.with(context)
             .load(GlobalData.PHOTO_URL_PREFIX + dataSet[position].photoUrl)
             .into(viewHolder.photo);
+    }
+
+    private fun shortenDescription(description: String): String {
+        return if (description.length < 100) {
+            description
+        } else {
+            "${description.substring(0, 97)}..."
+        }
     }
 
     override fun getItemCount() = dataSet.size

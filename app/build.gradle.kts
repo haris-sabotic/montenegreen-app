@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs")
 }
 
 android {
@@ -37,6 +38,8 @@ android {
         viewBinding = true
     }
 }
+
+
 
 dependencies {
 
